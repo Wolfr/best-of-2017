@@ -1,0 +1,101 @@
+/* ==========================================================================
+  Specific styles to make the styleguide look better
+  In the "real world" (e.g. the app itself) some HTML elements are hidden by default, or positioned in specific ways.
+  In the styleguide sometimes we want to undo some of that for demonstrational purposes.
+   ========================================================================== */
+
+/* Taller samples
+   ========================================================================== */
+
+.c-sample-content-tall {
+  min-height: 500px;
+}
+
+/* Make tooltips visible in styleguide
+   ========================================================================== */
+
+#component-b-tooltip {
+  .br-sample-content {
+    min-height: 100px;
+    .tooltip {;
+      position: relative;
+      display: inline-block;
+      margin: 10px 20px;
+      opacity: 1;
+    }
+    .arrow {
+      left: 50%;
+    }
+  }
+}
+
+/* Make popovers visible
+   ========================================================================== */
+
+div[id^="component-"] {
+  .popover {
+    position: relative;
+    display: block;
+    margin: 30px;
+  }
+}
+
+/* Make modals visible in styleguide
+   ========================================================================== */
+
+div[id^="component-"] {
+  .modal {
+    display: block;
+    opacity: 1;
+    position: static;
+
+    display: block;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 20px;
+    padding: 20px;
+    z-index: 1;
+    max-width: 100%;
+  }
+}
+
+.br-sample-content {
+  &.c-sample-overflow {
+    overflow: initial;
+  }
+}
+
+/* Fix floating alert
+   ========================================================================== */
+
+.br-styleguide-content {
+  .alert-floating-container {
+    position: absolute;
+    opacity: 1;
+  }
+}
+
+/* Expand dropdowns in some component examples
+   ========================================================================== */
+
+#component-01-dropdown,
+#component-02-dropdown-divider {
+  .dropdown {
+    > .dropdown-menu {
+      position: static;
+      display: block;
+      margin-bottom: 5px;
+      clear: left;
+    }
+    .btn {
+      float: left;
+    }
+  }
+}
+
+#component-03-multi-level-dropdown {
+  .br-sample-content {
+    min-height: 200px;
+  }
+}

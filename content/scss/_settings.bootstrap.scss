@@ -1,0 +1,33 @@
+/**
+ * Bootstrap settings
+ * overrides bootstrap's default variables
+ */
+
+//
+// Color system
+//
+
+$primary:       $blue-500;
+$secondary:     $gray-200;
+$success:       $green-500;
+$info:          $blue-400;
+$danger:        $red-500;
+$light:         $gray-100;
+$dark:          $blue-700;
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-color              : $gray-700;
+
+// Can't use global $enable-rounded since we want rounded in some cases (e.g. tabs)
+$border-radius           : 0;
+$border-radius-lg        : 0;
+$border-radius-sm        : 0;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns           : 16;

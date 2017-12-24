@@ -1,0 +1,34 @@
+include ../../../core/templates/mixins/icon
+
+block pageVariables
+    // Use this block to append page variables in templates
+    - var projectTitle = "Project title"
+    - var moduleTitle = "Module"
+
+doctype html
+html(lang='en' class=htmlClass ? htmlClass : '')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="robots", content="noindex")
+
+        title
+            if moduleTitle
+                | #{moduleTitle} - #{projectTitle}
+            else
+                | #{projectTitle}
+
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/css/main.css')
+        link(rel='stylesheet', href='/css/prototype.css')
+        link(rel='stylesheet', href='/css/styleguide.css')
+
+    body(class=bodyClass ? bodyClass : '')
+
+        block body
+
+        include ../../../core/templates/includes/prototype-nav
+
+        = "\n"
+        script(src='/js/bundle.js')
