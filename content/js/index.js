@@ -1,6 +1,6 @@
 // jQuery
-const $ = require('jquery');
-window.$ = $;
+// const $ = require('jquery');
+// window.$ = $;
 
 
 // Require JS to render prototype,

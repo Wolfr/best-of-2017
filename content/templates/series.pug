@@ -4,20 +4,20 @@ block append pageVariables
     - var pageTitle = "Series"
 
 block maincontent
-    .cards
-        each item in contentData.series.records
+    each item in contentData.series.records
+        .cover
             if item.fields.name
-                .card.card-2.js-tilt
+                .cover-image
                     +image(item)
-                    .card-body
-                        h3.card-heading
-                            | #{item.fields.name} 
-                            if item.fields.season
-                                | - Season #{item.fields.season}
-                        p
-                            | #{moment(item.fields.releaseDate).format("MMMM Do")}
-                            if item.fields.platform
-                                | - #{item.fields.platform}
-                        div
-                            | #{item.fields.description}
+                .cover-info
+                    h3.cover-heading
+                        | #{item.fields.name} 
+                        if item.fields.season
+                            | - Season #{item.fields.season}
+                    p.meta
+                        | #{moment(item.fields.releaseDate).format("MMMM Do")} 
+                        if item.fields.platform
+                            | - #{item.fields.platform}
+                    div
+                        | #{item.fields.description}
 

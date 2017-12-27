@@ -1,70 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,900|Bungee');
 
-
-/*
-
-	Glitchy Text from https://css-tricks.com/glitch-effect-text-images-svg/
-
-  (TEXT) PARAMS
-  =================
-  1. Namespace
-  2. Intensity
-  3. Text color
-  4. Background color (flat)
-  5. Highlight #1 color
-  6. Highlight #2 color
-  7. Width (px)
-  8. Height (px)
-*/
-
-@mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
-  
-  color: $textColor;
-  position: relative;
-  $steps: $intensity;
-  
-  // Ensure the @keyframes are generated at the root level
-  @at-root {
-    // We need two different ones
-    @for $i from 1 through 2 {
-      @keyframes #{$name}-anim-#{$i} {
-        @for $i from 0 through $steps {
-          #{percentage($i*(1/$steps))} {
-            clip: rect(
-              random($height)+px,
-              $width+px,
-              random($height)+px,
-              0
-            );
-          }
-        }
-      }
-    }
-  }
-  &:before,
-  &:after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: $background;
-    clip: rect(0, 0, 0, 0); 
-  }
-  &:after {
-    left: 2px;
-    text-shadow: -1px 0 $highlightColor1;
-    animation: #{$name}-anim-1 2s 3 linear alternate-reverse;
-  }
-  &:before {
-    left: -2px;
-    text-shadow: 2px 0 $highlightColor2; 
-    animation: #{$name}-anim-2 3s 3 linear alternate-reverse;
-  }
-  
-}
-
-
 /**
  * Styles
  */
@@ -208,7 +143,7 @@ body {
 /* Headings
    ========================================================================== */
 
-.h1 {
+.main-title {
   text-align: center;
   font-size: 5.2rem;
   font-weight: 700;
@@ -218,7 +153,7 @@ body {
 
   a {
     text-decoration: none;
-    @include textGlitch("glitch", 2, #FFF, black, red, blue, 380, 45);
+    color: #FFF;
   }
 }
 
@@ -232,6 +167,7 @@ body {
    ========================================================================== */
 
 .main-nav {
+  padding: 4rem 0;
   text-align: center;
   margin-bottom: 3rem;
   a {
@@ -257,6 +193,7 @@ body {
 
 
 footer {
+  padding-top: 12rem;
   text-align: center;
   opacity: 0.5;
   li {
@@ -266,5 +203,42 @@ footer {
   color: #FFF;
   a {
     color: #FFF;
+  }
+}
+
+.cover {
+  display: flex;
+  align-items: center;
+  margin: 4rem 0;
+  &:nth-child(2n) {
+    flex-flow: row-reverse;
+  }
+}
+
+.cover-image {
+  width: 50%;
+  img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 30rem;
+  }
+  
+}
+
+.cover-info {
+  width: 50%;
+  padding: 4rem;
+  color: #AAA;
+  font-size: 1.5rem;
+  .cover-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #FFF;
+  }
+  .meta {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    text-transform: uppercase;
   }
 }
