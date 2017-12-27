@@ -2,8 +2,7 @@ include ../../../core/templates/mixins/icon
 
 block pageVariables
     // Use this block to append page variables in templates
-    - var projectTitle = "Project title"
-    - var moduleTitle = "Module"
+    - var projectTitle = "Best of 2017"
 
 doctype html
 html(lang='en' class=htmlClass ? htmlClass : '')
@@ -14,8 +13,8 @@ html(lang='en' class=htmlClass ? htmlClass : '')
         meta(name="robots", content="noindex")
 
         title
-            if moduleTitle
-                | #{moduleTitle} - #{projectTitle}
+            if pageTitle
+                | #{pageTitle} - #{projectTitle}
             else
                 | #{projectTitle}
 
@@ -23,11 +22,22 @@ html(lang='en' class=htmlClass ? htmlClass : '')
         link(rel='stylesheet', href='/css/prototype.css')
         link(rel='stylesheet', href='/css/styleguide.css')
 
+        script(src="/resources/jquery.js")
+
     body(class=bodyClass ? bodyClass : '')
 
         block body
 
-        include ../../../core/templates/includes/prototype-nav
+        //include ../../../core/templates/includes/prototype-nav
 
-        = "\n"
-        script(src='/js/bundle.js')
+        script(src="https://unpkg.com/tilt.js@1.1.21/dest/tilt.jquery.min.js")
+        script.
+            $(function() {
+              var tilt = $('.js-tilt').tilt({
+                  glare: true,
+                  maxGlare: .3,
+                  scale: 1,
+                  perspective: 1500
+              });
+            });
+

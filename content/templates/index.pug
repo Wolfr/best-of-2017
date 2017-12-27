@@ -14,16 +14,15 @@ mixin cardbody
         p Subtitle
 
 block append pageVariables
-    - var mainPageIsActive = true
-    //- require('moment')
+    - var pageTitle = "Music albums"
 
 block body
 
     h1.h1
-        a(href="/") Best of 2017
+        a(href="/", data-text="Best of 2017") Best of 2017
 
-    nav
-        a(href="index.html" class=mainPageIsActive ? "selected" : "") Music Albums
+    nav.main-nav
+        a(href="index.html" class=pageTitle.match(/Music albums/) ? "selected" : "") Music Albums
         a(href="movies.html" class=pathname.match(/movies/) ? "selected" : "") Movies
         a(href="series.html" class=pathname.match(/series/) ? "selected" : "") Series
         a(href="games.html" class=pathname.match(/games/) ? "selected" : "") Video Games
@@ -32,10 +31,15 @@ block body
         .cards
             each item in contentData.albums.records
                 if item.fields.name
-                    .card
+                    .card.js-tilt
                         +image(item)
                         .card-body
                             h3.card-heading #{item.fields.name} - #{item.fields.albumName}
-                            p Released: #{item.fields.releaseDate}
-                            //p Released: #{item.fields.releaseDate.moment().format("MMM Do YY")}
-    
+                            p=moment(item.fields.releaseDate).format("MMMM Do")
+    footer
+        ul
+             li Created by wolfr_2 as a side project
+             li Images copyright to their respective creators
+             li Series data copyright IMDB
+             li: a(href="https://twitter.com/wolfr_2") Follow me on Twitter
+             li: a(href="http://johanronsse.be") Check out my personal site

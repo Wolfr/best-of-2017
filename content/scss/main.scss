@@ -1,3 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,900|Bungee');
+
+
+/*
+
+	Glitchy Text from https://css-tricks.com/glitch-effect-text-images-svg/
+
+  (TEXT) PARAMS
+  =================
+  1. Namespace
+  2. Intensity
+  3. Text color
+  4. Background color (flat)
+  5. Highlight #1 color
+  6. Highlight #2 color
+  7. Width (px)
+  8. Height (px)
+*/
+
+@mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
+  
+  color: $textColor;
+  position: relative;
+  $steps: $intensity;
+  
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i*(1/$steps))} {
+            clip: rect(
+              random($height)+px,
+              $width+px,
+              random($height)+px,
+              0
+            );
+          }
+        }
+      }
+    }
+  }
+  &:before,
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $background;
+    clip: rect(0, 0, 0, 0); 
+  }
+  &:after {
+    left: 2px;
+    text-shadow: -1px 0 $highlightColor1;
+    animation: #{$name}-anim-1 2s 3 linear alternate-reverse;
+  }
+  &:before {
+    left: -2px;
+    text-shadow: 2px 0 $highlightColor2; 
+    animation: #{$name}-anim-2 3s 3 linear alternate-reverse;
+  }
+  
+}
+
+
 /**
  * Styles
  */
@@ -70,18 +137,20 @@ html {
 }
 
 body {
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Roboto', Arial, sans-serif;
   line-height: 1.5;
-  padding: 2rem;
+  padding: 6rem 2rem;
   font-size: 1.4rem;
   max-width: 128rem;
   margin: 0 auto;
+  background: #000;
+  color: #FFF;
 }
 
 .cards {
    display: grid;
    grid-gap: 2rem;
-   grid-template-columns: repeat(auto-fill, 8rem);
+   grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
    margin: 0 0 4rem;
 }
 
@@ -95,17 +164,16 @@ body {
 }
 
 .card {
-  grid-column-end: span 2;
-  .card-image img {
-      height: 18rem;
-  }
+  margin: 1rem;
+  text-align: center;
+  grid-column-end: span 4;
 }
 
 .card-2 {
-  grid-column-end: span 4;
+  grid-column-end: span 8;
   .card-image {
     img {
-      height: 24rem;
+      height: 28rem;
     }
   }
   .card-heading {
@@ -114,7 +182,7 @@ body {
 }
 
 .card-3 {
-  grid-column-end: span 6;
+  grid-column-end: span 12;
   .card-image {
     img {
       height: 30rem;
@@ -123,7 +191,7 @@ body {
 }
 
 .card-body {
-  margin-top: 1rem;
+  padding: 1rem;
 }
 
 .card-body .card-heading {
@@ -132,19 +200,25 @@ body {
 
 
 .card-body p {
-  opacity: 0.5;
+  opacity: 0.4;
+  text-transform: uppercase;
+  font-size: 1.2rem;
 }
 
 /* Headings
    ========================================================================== */
 
 .h1 {
-  font-size: 3.6rem;
-  font-weight: 600;
+  text-align: center;
+  font-size: 5.2rem;
+  font-weight: 700;
+  letter-spacing: -0.2rem;
   margin: 0 0 2rem;
+  font-family: Bungee;
+
   a {
     text-decoration: none;
-    color: #000;
+    @include textGlitch("glitch", 2, #FFF, black, red, blue, 380, 45);
   }
 }
 
@@ -157,19 +231,40 @@ body {
 /* Main nav 
    ========================================================================== */
 
-nav {
-  margin-bottom: 2rem;
+.main-nav {
+  text-align: center;
+  margin-bottom: 3rem;
+  a {
+    font-size: 2.4rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 2rem;
+    opacity: 0.5;
+    color: #FFF;
+    font-family: Bungee;
+    text-decoration: none;
+    transform: rotate(-3deg);
+    transform-origin: top left;
+    display: inline-block;
+    &.selected,
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
 }
 
-nav a {
-  font-size: 2.4rem;
-  font-weight: 500;
-  text-decoration: none;
-  margin-right: 2rem;
-  color: #999;
-  &.selected,
-  &:hover,
-  &:focus {
-    color: #000;
+
+
+footer {
+  text-align: center;
+  opacity: 0.5;
+  li {
+    display: inline-block;
+    padding: 0.4rem;
+  }
+  color: #FFF;
+  a {
+    color: #FFF;
   }
 }
