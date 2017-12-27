@@ -1,5 +1,8 @@
 extends index
 
+block append pageVariables
+    - var mainPageIsActive = false
+
 block maincontent
     .cards
         each item in contentData.movies.records

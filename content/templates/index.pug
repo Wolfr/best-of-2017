@@ -13,18 +13,20 @@ mixin cardbody
         h3.card-heading Title
         p Subtitle
 
+block append pageVariables
+    - var mainPageIsActive = true
+    //- require('moment')
+
 block body
 
     h1.h1
         a(href="/") Best of 2017
 
-    - var pageIsActive = true
-
     nav
-        a(href="index.html" class=pageIsActive ? "selected" : "") Music Albums
+        a(href="index.html" class=mainPageIsActive ? "selected" : "") Music Albums
         a(href="movies.html" class=pathname.match(/movies/) ? "selected" : "") Movies
         a(href="series.html" class=pathname.match(/series/) ? "selected" : "") Series
-        a(href="games.html" class=pathname.match(/video-games/) ? "selected" : "") Video Games
+        a(href="games.html" class=pathname.match(/games/) ? "selected" : "") Video Games
 
     block maincontent
         .cards
@@ -35,4 +37,5 @@ block body
                         .card-body
                             h3.card-heading #{item.fields.name} - #{item.fields.albumName}
                             p Released: #{item.fields.releaseDate}
+                            //p Released: #{item.fields.releaseDate.moment().format("MMM Do YY")}
     
