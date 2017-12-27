@@ -1,61 +1,154 @@
 /**
- * Smart OEE Styles
+ * Styles
  */
 
 // Set a path to colors in bedrock.config.js
 
 @import "settings.colors";
 
-// Bootstrap variables first
-@import "bootstrap/functions";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-@import "settings.bootstrap";
-@import "bootstrap/variables";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
-// Bootstrap, comment what we don't use
-@import "bootstrap/mixins";
-@import "bootstrap/root";
-@import "bootstrap/print";
-@import "bootstrap/reboot";
-// @import "bootstrap/type";
-// @import "bootstrap/images";
-// @import "bootstrap/code";
-@import "bootstrap/grid";
-@import "bootstrap/tables";
-@import "bootstrap/forms";
-//@import "bootstrap/buttons";
-@import "bootstrap/transitions";
-@import "bootstrap/dropdown";
-@import "bootstrap/button-group";
-@import "bootstrap/input-group";
-@import "bootstrap/custom-forms";
-@import "bootstrap/nav";
-@import "bootstrap/navbar";
-@import "bootstrap/card";
-//@import "bootstrap/breadcrumb";
-@import "bootstrap/pagination";
-@import "bootstrap/badge";
-// @import "bootstrap/jumbotron";
-@import "bootstrap/alert";
-@import "bootstrap/progress";
-// @import "bootstrap/media";
-@import "bootstrap/list-group";
-@import "bootstrap/close";
-@import "bootstrap/modal";
-@import "bootstrap/tooltip";
-@import "bootstrap/popover";
-// @import "bootstrap/carousel";
-@import "bootstrap/utilities";
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
-// Bootstrap disagreements
-// Wherein we switch the logic of some components
-@import "bootstrap-disagreements/buttons";
-@import "bootstrap-disagreements/type";
+html {
+  font-size: 62.5%;
+}
 
-// Bootstrap additions
-@import "bootstrap-additions/tables";
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 2rem;
+  font-size: 1.4rem;
+  max-width: 128rem;
+  margin: 0 auto;
+}
 
-/* Shameful CSS that should be refactored
-   ========================================================================== */
+.cards {
+   display: grid;
+   grid-gap: 2rem;
+   grid-template-columns: repeat(auto-fill, 8rem);
+   margin: 0 0 4rem;
+}
 
-@import "shame";
+.card .card-image {
+  img {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.card {
+  grid-column-end: span 2;
+  .card-image img {
+      height: 18rem;
+  }
+}
+
+.card-2 {
+  grid-column-end: span 4;
+  .card-image {
+    img {
+      height: 24rem;
+    }
+  }
+}
+
+.card-3 {
+  grid-column-end: span 6;
+  .card-image {
+    img {
+      height: 30rem;
+    }
+  }
+}
+
+.card-body {
+  margin-top: 1rem;
+}
+
+.card-body .card-heading {
+  font-weight: 700;
+}
+
+
+.h1 {
+  font-size: 3.6rem;
+  font-weight: 600;
+  margin: 0 0 2rem;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.h3 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin: 0 0 2rem;
+}
+
+nav {
+  margin-bottom: 2rem;
+}
+
+nav a {
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 2rem;
+  color: #666;
+  &.selected {
+    color: #000;
+  }
+}

@@ -1,0 +1,11 @@
+extends index
+
+block maincontent
+    .cards
+        each item in contentData.movies.records
+            if item.fields.name
+                .card.card-2
+                    +image(item)
+                    .card-body
+                        h3.card-heading #{item.fields.name}
+                        p Released: #{item.fields.releaseDate}

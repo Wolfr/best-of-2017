@@ -1,0 +1,14 @@
+extends index
+
+block maincontent
+    .cards
+        each item in contentData.series.records
+            if item.fields.name
+                .card.card-2
+                    +image(item)
+                    .card-body
+                        h3.card-heading
+                            | #{item.fields.name} 
+                            if item.fields.season
+                                | Season #{item.fields.season}
+                        p Released: #{item.fields.releaseDate}

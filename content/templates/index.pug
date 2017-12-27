@@ -1,80 +1,38 @@
 extends _layouts/master
 
-block append pageVariables
-    - var htmlClass = config.ui && config.ui.dark ? 'br-prototype-nav--dark br-styleguide--dark' : ''
+mixin image(item)
+    if item.fields.image
+        .card-image
+            img(src=item.fields.image[Object.keys(item.fields.image)[0]].url)
+    else
+        .card-image
+            img(src="http://placehold.it/400x300")
 
-include ../../core/templates/mixins/render-page-tree
+mixin cardbody
+    .card-body
+        h3.card-heading Title
+        p Subtitle
 
 block body
-    
-    .container
-        .p-md-4.p-sm-2
-            h1.h1.mb-4 Best of 2017
-            .row
-                .col-md-8
-                    h2.h3 Music albums
-                    table.table.table-sm.table-align-middle.table-striped
-                        thead
-                            tr
-                                // th Created
-                                th Image
-                                th Name
-                                th Release
-                        each item in contentData.albums.records
-                            tr
-                                // td #{item.createdTime}
-                                td
-                                    if item.fields.image
-                                        img(height="140" src=item.fields.image[Object.keys(item.fields.image)[0]].url)
-                                td #{item.fields.name} - #{item.fields.albumName}
-                                td #{item.fields.releaseDate}
-                .col-md-8
-                    h2.h3 Movies
-                    table.table.table-sm.table-align-middle.table-striped
-                        thead
-                            tr
-                                // th Created
-                                th Image
-                                th Name
-                                th Release
-                        each item in contentData.movies.records
-                            tr
-                                // td #{item.createdTime}
-                                td
-                                    if item.fields.image
-                                        img(width="200" src=item.fields.image[Object.keys(item.fields.image)[0]].url)
-                                td #{item.fields.name}
-                                td #{item.fields.releaseDate}
-                    h2.h3 TV Series
-                    table.table.table-sm.table-align-middle.table-striped
-                        thead
-                            tr
-                                // th Created
-                                th Image
-                                th Name
-                                th Release
-                        each item in contentData.series.records
-                            tr
-                                // td #{item.createdTime}
-                                td
-                                    if item.fields.image
-                                        img(width="200" src=item.fields.image[Object.keys(item.fields.image)[0]].url)
-                                td #{item.fields.name}
-                                td #{item.fields.releaseDate}
-                    h2.h3 Video games
-                    table.table.table-sm.table-align-middle.table-striped
-                        thead
-                            tr
-                                // th Created
-                                th Image
-                                th Name
-                                th Release date
-                        each item in contentData.games.records
-                            tr
-                                // td #{item.createdTime}
-                                td
-                                    if item.fields.image
-                                        img(width="200" src=item.fields.image[Object.keys(item.fields.image)[0]].url)
-                                td #{item.fields.name}
-                                td #{item.fields.releaseDate}
 
+    h1.h1
+        a(href="/") Best of 2017
+
+    - var pageIsActive = true
+
+    nav
+        a(href="index.html" class=pageIsActive ? "selected" : "") Music Albums
+        a(href="movies.html" class=pathname.match(/movies/) ? "selected" : "") Movies
+        a(href="series.html" class=pathname.match(/series/) ? "selected" : "") Series
+        a(href="games.html" class=pathname.match(/video-games/) ? "selected" : "") Video Games
+
+    block maincontent
+        .cards
+            each item in contentData.albums.records
+                if item.fields.name
+                    .card
+                        +image(item)
+                        .card-body
+                            h3.card-heading #{item.fields.name} - #{item.fields.albumName}
+                            p Released: #{item.fields.releaseDate}
+    
