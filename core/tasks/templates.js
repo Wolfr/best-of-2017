@@ -9,6 +9,10 @@ const filter = require('gulp-filter');
 const path = require('path');
 const fs = require('fs');
 const pug = require('pug');
+
+const moment = require('moment');
+const marked = require('marked');
+
 const del = require('del');
 const es = require('event-stream');
 const config = require('../../bedrock.config');
@@ -91,6 +95,7 @@ module.exports = {
     },
     content() {
       const templateFilter = filter(function (file) {
+        
         const folderNameInTemplates = file.path.replace(process.cwd(), '').replace('/content/templates/', '');
         return path.parse(folderNameInTemplates).dir.charAt(0) !== '_';
       });

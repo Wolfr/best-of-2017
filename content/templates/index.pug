@@ -1,12 +1,11 @@
 extends _layouts/master
 
 mixin image(item)
-    if item.fields.image
-        .card-image
-            img(src=item.fields.image[Object.keys(item.fields.image)[0]].url)
-    else
-        .card-image
-            img(src="http://placehold.it/400x300")
+    if item.fields.optimizedImage
+        -var imgsrc = item.fields.optimizedImage[Object.keys(item.fields.optimizedImage)[0]].url
+    else if item.fields.image
+        -var imgsrc = item.fields.image[Object.keys(item.fields.image)[0]].url
+    img(src=imgsrc)
 
 mixin cardbody
     .card-body
@@ -31,15 +30,14 @@ block body
         .cards
             each item in contentData.albums.records
                 if item.fields.name
-                    .card.js-tilt
-                        +image(item)
+                    .card
+                        .card-image
+                            +image(item)
                         .card-body
                             h3.card-heading #{item.fields.name} - #{item.fields.albumName}
                             p=moment(item.fields.releaseDate).format("MMMM Do")
     footer
         ul
-             li Created by wolfr_2 as a side project
+             li Created by <a href="https://twitter.com/wolfr_2">wolfr</a>
              li Images copyright to their respective creators
-             li Series data copyright IMDB
-             li: a(href="https://twitter.com/wolfr_2") Follow me on Twitter
-             li: a(href="http://johanronsse.be") Check out my personal site
+             li: a(href="http://johanronsse.be/blog/") Check out the making of

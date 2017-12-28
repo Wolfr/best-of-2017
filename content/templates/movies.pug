@@ -4,11 +4,17 @@ block append pageVariables
     - var pageTitle = "Movies"
 
 block maincontent
-    .cards
-        each item in contentData.movies.records
+    each item in contentData.movies.records
+        .cover
             if item.fields.name
-                .card.card-2.js-tilt
+                .cover-image
                     +image(item)
-                    .card-body
-                        h3.card-heading #{item.fields.name}
-                        p=moment(item.fields.releaseDate).format("MMMM Do")
+                .cover-info
+                    h3.cover-heading
+                        | #{item.fields.name} 
+                    p.meta
+                        | #{moment(item.fields.releaseDate).format("MMMM Do")} 
+                    //div
+                    //    p Description (IMDB)
+                    //    | #{item.fields.description}
+                    div!= marked(item.fields.review)

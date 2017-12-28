@@ -10,7 +10,6 @@ html(lang='en' class=htmlClass ? htmlClass : '')
         meta(charset='UTF-8')
         meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
         meta(name="viewport", content="width=device-width, initial-scale=1")
-        meta(name="robots", content="noindex")
 
         title
             if pageTitle
@@ -18,26 +17,11 @@ html(lang='en' class=htmlClass ? htmlClass : '')
             else
                 | #{projectTitle}
 
-        link(rel='stylesheet', href='/css/main.css')
-        link(rel='stylesheet', href='/css/prototype.css')
-        link(rel='stylesheet', href='/css/styleguide.css')
-
-        script(src="/resources/jquery.js")
+        link(rel='stylesheet', href='css/main.css')
 
     body(class=bodyClass ? bodyClass : '')
 
         block body
 
         //include ../../../core/templates/includes/prototype-nav
-
-        //script(src="https://unpkg.com/tilt.js@1.1.21/dest/tilt.jquery.min.js")
-        //script.
-        //    $(function() {
-        //      var tilt = $('.js-tilt').tilt({
-        //          glare: true,
-        //          maxGlare: .3,
-        //          scale: 1,
-        //          perspective: 1500
-        //      });
-        //    });
 
