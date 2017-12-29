@@ -15,3 +15,7 @@ block maincontent
                     p.meta
                         | #{item.fields.platforms} • #{moment(item.fields.releaseDate).format("MMMM Do")}
                     div!= marked(item.fields.review)
+
+    .categories-nav
+        a.btn(href="/index.html") Back to front page
+    

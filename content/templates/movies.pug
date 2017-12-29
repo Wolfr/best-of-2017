@@ -14,7 +14,8 @@ block maincontent
                         | #{item.fields.name} 
                     p.meta
                         | #{moment(item.fields.releaseDate).format("MMMM Do")} 
-                    //div
-                    //    p Description (IMDB)
-                    //    | #{item.fields.description}
                     div!= marked(item.fields.review)
+    
+    .categories-nav
+        a.btn(href="/series.html") Next: series
+    

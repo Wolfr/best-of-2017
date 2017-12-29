@@ -18,7 +18,10 @@ block append pageVariables
 block body
 
     h1.main-title
-        a(href="/") Best of 2017
+        a(href="/")
+            | wolfr's
+            br
+            | Best of 2017
 
     nav.main-nav
         a(href="index.html" class=pageTitle.match(/Music albums/) ? "selected" : "") Music Albums
@@ -27,6 +30,7 @@ block body
         a(href="games.html" class=pathname.match(/games/) ? "selected" : "") Video Games
 
     block maincontent
+
         .cards
             each item in contentData.albums.records
                 if item.fields.name
@@ -36,6 +40,10 @@ block body
                         .card-body
                             h3.card-heading #{item.fields.name} - #{item.fields.albumName}
                             p=moment(item.fields.releaseDate).format("MMMM Do")
+
+        .categories-nav
+            a.btn(href="/movies.html") Next: Movies
+
     footer
         ul
              li Created by <a href="https://twitter.com/wolfr_2">wolfr</a>
