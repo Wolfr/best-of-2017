@@ -10,12 +10,16 @@ block maincontent
                 .cover-image
                     +image(item)
                 .cover-info
-                    h3.cover-heading
+                    h2.cover-heading
                         | #{item.fields.name} 
-                    p.meta
-                        | #{moment(item.fields.releaseDate).format("MMMM Do")} 
-                    div!= marked(item.fields.review)
+                    ul.c-horizontal-list
+                        li #{moment(item.fields.releaseDate).format("MMMM Do")} 
+                        li Letterboxd score: #{item.fields.letterboxdScore}
+                    .cover-review
+                        div!= marked(item.fields.review)
+                    a.c-btn(href=item.fields.letterboxdLink) View on Letterboxd
+                    a.c-btn(href=item.fields.trailerLink) View trailer on YouTube
     
     .categories-nav
-        a.btn(href="/series.html") Next: series
+        a.c-btn(href="/series.html") Next: series
     

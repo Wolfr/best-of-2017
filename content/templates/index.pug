@@ -17,34 +17,35 @@ block append pageVariables
 
 block body
 
-    h1.main-title
-        a(href="/")
-            | wolfr's
-            br
-            | Best of 2017
+    header.main-header
+        h1.main-title
+            a(href="/")
+                | wolfr's Best of 2017
 
-    nav.main-nav
-        a(href="index.html" class=pageTitle.match(/Music albums/) ? "selected" : "") Music Albums
-        a(href="movies.html" class=pathname.match(/movies/) ? "selected" : "") Movies
-        a(href="series.html" class=pathname.match(/series/) ? "selected" : "") Series
-        a(href="games.html" class=pathname.match(/games/) ? "selected" : "") Video Games
+        nav.main-nav
+            a(href="index.html" class=pageTitle.match(/Music albums/) ? "selected" : "") Music Albums
+            a(href="movies.html" class=pathname.match(/movies/) ? "selected" : "") Movies
+            a(href="series.html" class=pathname.match(/series/) ? "selected" : "") Series
+            a(href="games.html" class=pathname.match(/games/) ? "selected" : "") Video Games
+            a(href="youtube.html" class=pathname.match(/youtube/) ? "selected" : "") YouTube channels
 
-    block maincontent
+    main
+        block maincontent
+            .cards
+                each item in contentData.albums.records
+                    if item.fields.name
+                        .card
+                            .card-image
+                                +image(item)
+                            .card-body
+                                h2.card-heading #{item.fields.name} - #{item.fields.albumName}
+                                p=moment(item.fields.releaseDate).format("MMMM Do")
+                                .c-tag #{item.fields.categories}
 
-        .cards
-            each item in contentData.albums.records
-                if item.fields.name
-                    .card
-                        .card-image
-                            +image(item)
-                        .card-body
-                            h3.card-heading #{item.fields.name} - #{item.fields.albumName}
-                            p=moment(item.fields.releaseDate).format("MMMM Do")
+            .categories-nav
+                a.c-btn(href="/movies.html") Next: Movies
 
-        .categories-nav
-            a.btn(href="/movies.html") Next: Movies
-
-    footer
+    footer.main-footer
         ul
              li Created by <a href="https://twitter.com/wolfr_2">wolfr</a>
              li Images copyright to their respective creators

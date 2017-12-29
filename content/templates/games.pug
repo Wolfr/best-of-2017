@@ -10,12 +10,15 @@ block maincontent
                 .cover-image
                     +image(item)
                 .cover-info
-                    h3.cover-heading
+                    h2.cover-heading
                         | #{item.fields.name} 
                     p.meta
                         | #{item.fields.platforms} • #{moment(item.fields.releaseDate).format("MMMM Do")}
                     div!= marked(item.fields.review)
+                    .c-tag-list
+                        each subitem in item.fields.categories
+                            .c-tag #{subitem}
 
     .categories-nav
-        a.btn(href="/index.html") Back to front page
+        a.c-btn(href="/youtube.html") Next: YouTube channels
     

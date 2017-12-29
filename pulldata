@@ -8,3 +8,6 @@ curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Series?maxRecords=99&view=Gr
 
 curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Games?maxRecords=99&view=Grid%20view" \
 -H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/games.json
+
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Youtube?maxRecords=99&view=Grid%20view" \
+-H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/youtube.json

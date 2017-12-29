@@ -26,7 +26,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  padding: 6rem 2rem;
+  padding: 2rem;
   font-size: 1.4rem;
   max-width: 128rem;
   margin: 0 auto;
@@ -53,7 +53,7 @@ body {
 .card {
   margin: 1rem;
   text-align: center;
-  grid-column-end: span 4;
+  grid-column-end: span 5;
   .card-heading {
     font-size: 1.5rem;
     font-weight: 600;
@@ -80,16 +80,10 @@ body {
 
 .main-title {
   text-align: center;
-  font-size: 4.2rem;
+  font-size: 2rem;
+  padding: 1.5rem 1rem;
   font-weight: 500;
-  margin: 0 0 2rem;
   line-height: 1.1;
-  &:first-line {
-    font-size: 50%;
-  }
-  @media (min-width: $break-md) {
-    font-size: 5.2rem;
-  }
   a {
     text-decoration: none;
     color: #FFF;
@@ -114,29 +108,46 @@ p {
 /* Main nav 
    ========================================================================== */
 
+.main-header {
+  @media (min-width: $break-md) {
+    display: flex;
+    justify-content: space-between;
+  }
+  margin: 0 0 4rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(#FFF,0.25);
+}
+
 .main-nav {
-  padding: 2rem 0 4rem;
   text-align: center;
-  margin-bottom: 3rem;
   a {
-    font-size: 2.4rem;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+    margin: 0.2rem 0;
+    font-size: 2rem;
     font-weight: 500;
     text-decoration: none;
-    margin-right: 2rem;
     opacity: 0.5;
     color: #FFF;
     text-decoration: none;
     &.selected,
     &:hover,
     &:focus {
-      opacity: 1;
+      background: rgba(#FFF,0.1);
+      opacity: 0.75;
       transition: 0.17s opacity ease-in-out;
+    }
+    &.selected {
+      background: rgba(#FFF,0.1);
+      opacity: 1;
     }
   }
 }
 
-footer {
-  padding-top: 8rem;
+.main-footer {
+  border-top: 1px solid rgba(#FFF,0.25);
+  padding-top: 2rem;
+  margin-top: 6rem;
   text-align: center;
   opacity: 0.5;
   ul {
@@ -153,6 +164,9 @@ footer {
   }
 }
 
+/* Cover
+   ========================================================================== */
+
 .cover {
   @media (min-width: $break-md) {
     display: flex;
@@ -161,7 +175,7 @@ footer {
       flex-flow: row-reverse;
     }
   }
-  margin: 4rem 0;
+  margin: 6rem 0;
 }
 
 .cover-image {
@@ -174,6 +188,10 @@ footer {
     max-height: 30rem;
   }
   
+}
+
+.cover-review {
+  margin: 0 0 2rem;
 }
 
 .cover-info {
@@ -210,14 +228,59 @@ footer {
 /* Button 
    ========================================================================== */
 
-.btn {
+.c-btn {
   color: #FFF;
   text-decoration: none;
   background: rgba(#FFF,0.1);
-  padding: 1rem;
+  padding: 1rem 1.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
   &:hover,
   &:focus {
     background: rgba(#FFF,0.3);
     transition: 0.17s background ease-in-out;
+  }
+}
+
+/* Horizontal list
+   ========================================================================== */
+
+.c-horizontal-list {
+  opacity: 0.6;
+  margin-bottom: 1rem;
+  
+  // Same styles as .meta
+  font-size: 1.2rem;
+  opacity: 0.6;
+  text-transform: uppercase;
+
+  li {
+    display: inline;
+    margin-right: 1rem;
+  }
+}
+
+/* Tag
+   ========================================================================== */
+
+.c-tag {
+  color: #FFF;
+  text-decoration: none;
+  background: rgba(#FFF,0.1);
+  padding: 0.5rem 1.2rem;
+  display: inline-block;
+  border-radius: 24px;
+  font-size: 1.2rem;
+}
+
+.card .c-tag {
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+.c-tag-list {
+  margin: 1rem 0;
+  .c-tag {
+    margin-right: 0.5rem;
   }
 }
