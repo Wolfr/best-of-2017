@@ -2,13 +2,19 @@ extends index
 
 block append pageVariables
     - var pageTitle = "Series"
+    - var bodyClass = ""
 
 block maincontent
+    .shift-content
+        h2.main-content-title Series
+        p.intro.intro--sm Netflix killed it this year, becoming a synonym for watching TV series. 6 out of 7 entries listed here are on Netflix. I tried diversifying with <em>Amazon Prime</em> but honestly, it just wasn't good enough. 
+
     each item in contentData.series.records
         .cover
             if item.fields.name
-                .cover-image
-                    +image(item)
+                .cover-image-holder
+                    .cover-image
+                        +image(item)
                 .cover-info
                     h2.cover-heading
                         | #{item.fields.name} 
@@ -22,5 +28,5 @@ block maincontent
                         | #{item.fields.review}
                     a.c-btn(href=item.fields.trailerLink) View trailer on YouTube
     .categories-nav
-        a.c-btn(href="/games.html") Next: Games
-    
+        a.c-btn.c-btn--md(href="/movies.html") &larr; Previous: Movies
+        a.c-btn.c-btn--md(href="/games.html") Next: Games &rarr;

@@ -2,23 +2,46 @@ extends index
 
 block append pageVariables
     - var pageTitle = "YouTube channels"
+    - var bodyClass = ""
 
 block maincontent
+    .shift-content
+        h2.main-content-title YouTube
+        p.intro.intro--sm I said it before and I'll say it again: YouTube is the new TV. The world just hasn't woken up to it yet. Every year, Youtube gets more and more popular, and rightfully so. It's the only platform where creators can make a living out of their content creation.
     each item in contentData.youtube.records
         .cover
             if item.fields.name
-                .cover-image
-                    +image(item)
+                .cover-image-holder
+                    .cover-image
+                        +image(item)
                 .cover-info
                     h2.cover-heading
                         | #{item.fields.name} 
                     ul.c-horizontal-list
-                        li Subscribers: #{item.fields.subscriberCount}
-                        li Categories: #{item.fields.categories}
+                        each subitem in item.fields.categories
+                            li
+                                .c-tag #{subitem}
+                            li Subscribers: #{item.fields.subscriberCount}
                     .cover-review
                         div!= marked(item.fields.review)
-                    a.c-btn(href=item.fields.channelLink) View channel
+
+                        //- Video recommendations
+                        if item.fields.Videorecs
+                            p.caps Video recommendations
+                            ul.styled
+                                //- This is quite cool, we are cross referencing a table here
+                                // - First we loop through the relevant items
+                                each subItem in item.fields.Videorecs
+                                    each subSubItem in contentData.videorecs.records
+                                        // - We check for existence along the way
+                                        if subItem == subSubItem.id
+                                            // - And then render our item
+                                            li: a(href=subSubItem.fields.url)=subSubItem.fields.name
+
+                    .c-btn-group
+                        a.c-btn(href=item.fields.channelLink) View channel
 
     .categories-nav
-        a.c-btn(href="/index.html") Back to front page
+        a.c-btn.c-btn--md(href="/index.html") Back to front page
+        a.c-btn.c-btn--md(href="http://johanronsse.be/blog") Read the “making of”
     

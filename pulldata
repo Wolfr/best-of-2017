@@ -1,13 +1,20 @@
-curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Albums?maxRecords=99&view=Grid%20view" -H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/albums.json
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/albums?maxRecords=99&view=Grid%20view" \
+-H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/albums.json
 
-curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Movies?maxRecords=99&view=Grid%20view" \
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/movies?maxRecords=99&view=Grid%20view" \
 -H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/movies.json
 
-curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Series?maxRecords=99&view=Grid%20view" \
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/series?maxRecords=99&view=Grid%20view" \
 -H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/series.json
 
-curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Games?maxRecords=99&view=Grid%20view" \
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/games?maxRecords=99&view=Grid%20view" \
 -H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/games.json
 
-curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/Youtube?maxRecords=99&view=Grid%20view" \
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/youtube?maxRecords=99&view=Grid%20view" \
 -H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/youtube.json
+
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/videorecs?maxRecords=99&view=Grid%20view" \
+-H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/videorecs.json
+
+curl "https://api.airtable.com/v0/appPNWkaKNwNCBVrH/extramovieshots?maxRecords=99&view=Grid%20view" \
+-H "Authorization: Bearer keyrRWBwLRqy2Bt1b" -o content/data/extramovieshots.json

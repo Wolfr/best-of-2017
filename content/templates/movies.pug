@@ -2,19 +2,36 @@ extends index
 
 block append pageVariables
     - var pageTitle = "Movies"
+    - var bodyClass = ""
 
 block maincontent
+    .shift-content
+        h2.main-content-title Movies
+
     each item in contentData.movies.records
         .cover
             if item.fields.name
-                .cover-image
-                    +image(item)
+                .cover-image-holder
+                    .cover-image
+                        +image(item)
+                    
+                    //if item.fields.extramovieshots
+                    //    .other-images
+                    //        each subItem in item.fields.extramovieshots
+                    //            each subSubItem in contentData.extramovieshots.records
+                    //                // - We check for existence along the way
+                    //                if subItem == subSubItem.id
+                    //                    // - And then render our item
+                    //                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[0]].url)
+                    //                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[1]].url)
+                    //                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[2]].url)
+
                 .cover-info
                     h2.cover-heading
                         | #{item.fields.name} 
                     ul.c-horizontal-list
                         li #{moment(item.fields.releaseDate).format("MMMM Do")} 
-                        li Letterboxd score: #{item.fields.letterboxdScore}
+                        li Letterboxd score: #{item.fields.letterboxdScore}/5
 
                     .cover-review
                         div!= marked(item.fields.review)
@@ -22,7 +39,8 @@ block maincontent
                     .c-btn-group
                         a.c-btn(href=item.fields.letterboxdLink) View on Letterboxd
                         a.c-btn(href=item.fields.trailerLink) View trailer on YouTube
-    
+
     .categories-nav
-        a.c-btn(href="/series.html") Next: series
+        a.c-btn.c-btn--md(href="/albums.html") &larr; Previous: Albums
+        a.c-btn.c-btn--md(href="/series.html") Next: Series &rarr;
     

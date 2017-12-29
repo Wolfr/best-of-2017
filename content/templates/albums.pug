@@ -2,8 +2,12 @@ extends index
 
 block append pageVariables
     - var pageTitle = "Music albums"
+    - var bodyClass = ""
 
 block maincontent
+    .shift-content
+        h2.main-content-title Albums
+        p.intro.intro--sm With each passing year, my musical tastes shift around. Some pop music that I would've frown upon in the past is now rather enjoyable. This year I discovered a lot of (Brussels-based) hip hop artists. There were also some great albums from artists that I'll probably like forever, like <em>The National</em> and <em>Feist</em>.
     .cards
         each item in contentData.albums.records
             if item.fields.name
@@ -16,4 +20,5 @@ block maincontent
                         .c-tag #{item.fields.categories}
 
     .categories-nav
-        a.c-btn(href="/movies.html") Next: Movies
+        a.c-btn.c-btn--md(href="/") &larr; Previous: Intro
+        a.c-btn.c-btn--md(href="/movies.html") Next: Movies &rarr;

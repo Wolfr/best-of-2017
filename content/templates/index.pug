@@ -14,6 +14,7 @@ mixin cardbody
 
 block append pageVariables
     - var pageTitle = "Intro"
+    - var bodyClass = "is-decorated"
 
 block body
 
@@ -24,7 +25,7 @@ block body
 
         nav.main-nav
             a(href="index.html" class=pageTitle.match(/Intro/) ? "selected" : "") Intro
-            a(href="movies.html" class=pathname.match(/albums/) ? "selected" : "") Albums
+            a(href="albums.html" class=pathname.match(/albums/) ? "selected" : "") Albums
             a(href="movies.html" class=pathname.match(/movies/) ? "selected" : "") Movies
             a(href="series.html" class=pathname.match(/series/) ? "selected" : "") Series
             a(href="games.html" class=pathname.match(/games/) ? "selected" : "") Video Games
@@ -35,9 +36,14 @@ block body
             .intro-wrapper
                 div
                     p.intro Over the holidays, I've compiled these lists of my favorites of 2017. It was a technical exercise to try out things I didn't get to during the year, while also revisiting some of my favorite content and/or releases. Enjoy.
-                    a.c-btn.c-btn--large(href="/albums.html") Start here &rarr;
+                    a.c-btn.c-btn--lg(href="/albums.html") Start here &rarr;
     footer.main-footer
         ul
-             li ©2018 <a href="https://twitter.com/wolfr_2">Johan Ronsse</a>
+             li
+                 span.footer-label ©2018 Johan Ronsse
+             li
+                 a(href="https://twitter.com/wolfr_2")
+                     +icon('twitter')
+                     .btn-text Follow me on Twitter
              li: a(href="/disclaimer.html") Disclaimer
              li: a(href="http://johanronsse.be/blog/") Check out the making of

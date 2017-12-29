@@ -2,14 +2,19 @@ extends index
 
 block append pageVariables
     - var pageTitle = "Games"
+    - var bodyClass = ""
 
 block maincontent
+    .shift-content
+        h2.main-content-title Video Games
+        p.intro.intro--sm The biggest thing in games this year was arguably the introduction of Nintendo's <em>Switch</em>. Before the Switch, there was a clear distinction between mobile gaming, and gaming at home. Now, that's gone. The Switch played a major role in my 2017 gaming adventures, but some of the best gaming still happened on that good ol' PS4.
     .cover-alt-wrapper
         each item in contentData.games.records
             .cover-alt
                 if item.fields.name
-                    .cover-image
-                        +image(item)
+                    .cover-image-holder
+                        .cover-image
+                            +image(item)
                     .cover-info
                         h2.cover-heading
                             | #{item.fields.name} 
@@ -23,5 +28,5 @@ block maincontent
                             div!= marked(item.fields.review)
 
     .categories-nav
-        a.c-btn(href="/youtube.html") Next: YouTube channels
-    
+        a.c-btn.c-btn--md(href="/series.html") &larr; Previous: Series
+        a.c-btn.c-btn--md(href="/youtube.html") Next: YouTube channels &rarr;
