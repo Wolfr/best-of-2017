@@ -1,0 +1,19 @@
+extends index
+
+block append pageVariables
+    - var pageTitle = "Music albums"
+
+block maincontent
+    .cards
+        each item in contentData.albums.records
+            if item.fields.name
+                .card
+                    .card-image
+                        +image(item)
+                    .card-body
+                        h2.card-heading #{item.fields.name} - #{item.fields.albumName}
+                        p.meta=moment(item.fields.releaseDate).format("MMMM Do")
+                        .c-tag #{item.fields.categories}
+
+    .categories-nav
+        a.c-btn(href="/movies.html") Next: Movies

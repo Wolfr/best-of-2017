@@ -4,20 +4,23 @@ block append pageVariables
     - var pageTitle = "Games"
 
 block maincontent
-    each item in contentData.games.records
-        .cover
-            if item.fields.name
-                .cover-image
-                    +image(item)
-                .cover-info
-                    h2.cover-heading
-                        | #{item.fields.name} 
-                    p.meta
-                        | #{item.fields.platforms} • #{moment(item.fields.releaseDate).format("MMMM Do")}
-                    div!= marked(item.fields.review)
-                    .c-tag-list
-                        each subitem in item.fields.categories
-                            .c-tag #{subitem}
+    .cover-alt-wrapper
+        each item in contentData.games.records
+            .cover-alt
+                if item.fields.name
+                    .cover-image
+                        +image(item)
+                    .cover-info
+                        h2.cover-heading
+                            | #{item.fields.name} 
+                        ul.c-horizontal-list
+                            li Released #{moment(item.fields.releaseDate).format("MMMM Do")} 
+                            li #{item.fields.platforms}
+                            each subitem in item.fields.categories
+                                li
+                                    .c-tag #{subitem}
+                        .cover-review
+                            div!= marked(item.fields.review)
 
     .categories-nav
         a.c-btn(href="/youtube.html") Next: YouTube channels

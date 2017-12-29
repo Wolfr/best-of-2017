@@ -15,10 +15,13 @@ block maincontent
                     ul.c-horizontal-list
                         li #{moment(item.fields.releaseDate).format("MMMM Do")} 
                         li Letterboxd score: #{item.fields.letterboxdScore}
+
                     .cover-review
                         div!= marked(item.fields.review)
-                    a.c-btn(href=item.fields.letterboxdLink) View on Letterboxd
-                    a.c-btn(href=item.fields.trailerLink) View trailer on YouTube
+
+                    .c-btn-group
+                        a.c-btn(href=item.fields.letterboxdLink) View on Letterboxd
+                        a.c-btn(href=item.fields.trailerLink) View trailer on YouTube
     
     .categories-nav
         a.c-btn(href="/series.html") Next: series

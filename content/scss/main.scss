@@ -17,10 +17,14 @@ html {
   font-size: 50%;
 }
 
-@media (min-width: 700px) {
+@media (min-width: $break-md) {
   html {
     font-size: 62.5%;
   }
+}
+
+img {
+  max-width: 100%;
 }
 
 body {
@@ -32,6 +36,10 @@ body {
   margin: 0 auto;
   background: #000;
   color: #FFF;
+}
+
+p, li {
+  font-size: 1.6rem;
 }
 
 .cards {
@@ -69,14 +77,34 @@ body {
   font-weight: 700;
 }
 
-.card-body p {
+.card-body p.meta {
   opacity: 0.4;
+  margin: 0.3rem 0;
   text-transform: uppercase;
   font-size: 1.2rem;
 }
 
 /* Headings
    ========================================================================== */
+
+.h3 {
+  font-size: 2.1rem;
+  font-weight: 500;
+  margin: 0 0 2rem;
+}
+
+/* Main nav/title etc.
+   ========================================================================== */
+
+.main-header {
+  @media (min-width: $break-md + 200) {
+    display: flex;
+    justify-content: space-between;
+  }
+  margin: 0 0 4rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(#FFF,0.25);
+}
 
 .main-title {
   text-align: center;
@@ -95,33 +123,11 @@ body {
   }
 }
 
-.h3 {
-  font-size: 2.1rem;
-  font-weight: 500;
-  margin: 0 0 2rem;
-}
-
-p {
-  font-size: 1.6rem;
-}
-
-/* Main nav 
-   ========================================================================== */
-
-.main-header {
-  @media (min-width: $break-md) {
-    display: flex;
-    justify-content: space-between;
-  }
-  margin: 0 0 4rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(#FFF,0.25);
-}
 
 .main-nav {
   text-align: center;
   a {
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     display: inline-block;
     margin: 0.2rem 0;
     font-size: 2rem;
@@ -148,7 +154,6 @@ p {
   border-top: 1px solid rgba(#FFF,0.25);
   padding-top: 2rem;
   margin-top: 6rem;
-  text-align: center;
   opacity: 0.5;
   ul {
     padding: 0;
@@ -178,7 +183,7 @@ p {
   margin: 6rem 0;
 }
 
-.cover-image {
+.cover .cover-image {
   @media (min-width: $break-md) {
     width: 50%;
   }
@@ -187,25 +192,33 @@ p {
     object-fit: cover;
     max-height: 30rem;
   }
-  
 }
 
 .cover-review {
   margin: 0 0 2rem;
+  p {
+    margin: 0 0 1rem;
+  }
 }
 
-.cover-info {
+.cover .cover-info {
   padding: 2rem 0;
-
   @media (min-width: $break-md) {
     width: 50%;
     padding: 4rem;
   }
+}
+
+.cover-alt .cover-info {
+  padding: 2rem 0;
+}
+
+.cover-info {
   color: #AAA;
   font-size: 1.5rem;
   .cover-heading {
     font-size: 2.2rem;
-    font-weight: 700;
+    font-weight: 500;
     margin: 0 0 0.5rem;
     padding: 0;
     color: #FFF;
@@ -240,23 +253,29 @@ p {
     background: rgba(#FFF,0.3);
     transition: 0.17s background ease-in-out;
   }
+  &--large {
+    padding: 1.8rem 2.8rem;
+    font-size: 2.4rem;
+  }
 }
 
 /* Horizontal list
    ========================================================================== */
 
 .c-horizontal-list {
-  opacity: 0.6;
   margin-bottom: 1rem;
-  
-  // Same styles as .meta
-  font-size: 1.2rem;
-  opacity: 0.6;
   text-transform: uppercase;
 
   li {
     display: inline;
-    margin-right: 1rem;
+    margin-right: 0.7rem;
+    
+    // Same styles as .meta
+    font-size: 1.2rem;
+    opacity: 0.8;
+    .c-tag {
+      
+    }
   }
 }
 
@@ -283,4 +302,39 @@ p {
   .c-tag {
     margin-right: 0.5rem;
   }
+}
+
+/* Intro 
+   ========================================================================== */
+
+.intro-wrapper {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  @media (min-width: $break-md) {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+}
+.intro {
+  margin: 0 0 4rem;
+  font-size: 200%;
+  @media (min-width: $break-md) {
+    font-size: 300%;
+  }
+}
+
+/* Cover alt layout 
+   ========================================================================== */
+
+.cover-alt-wrapper {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+  margin: 0 0 4rem;
+}
+
+.cover-alt {
+  grid-column-end: span 10;
 }

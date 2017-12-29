@@ -12,15 +12,15 @@ block maincontent
                 .cover-info
                     h2.cover-heading
                         | #{item.fields.name} 
+                    ul.c-horizontal-list
+                        li Released #{moment(item.fields.releaseDate).format("MMMM Do")} 
                         if item.fields.season
-                            | - Season #{item.fields.season}
-                    p.meta
-                        | #{moment(item.fields.releaseDate).format("MMMM Do")} 
+                            li Season #{item.fields.season}
                         if item.fields.platform
-                            | - #{item.fields.platform}
+                            li #{item.fields.platform}
                     .cover-review
                         | #{item.fields.review}
                     a.c-btn(href=item.fields.trailerLink) View trailer on YouTube
     .categories-nav
-        a.c-btn(href="/games.html") Next: games
+        a.c-btn(href="/games.html") Next: Games
     
