@@ -16,16 +16,16 @@ block maincontent
                     .cover-image
                         +image(item)
                     
-                    //if item.fields.extramovieshots
-                    //    .other-images
-                    //        each subItem in item.fields.extramovieshots
-                    //            each subSubItem in contentData.extramovieshots.records
-                    //                // - We check for existence along the way
-                    //                if subItem == subSubItem.id
-                    //                    // - And then render our item
-                    //                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[0]].url)
-                    //                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[1]].url)
-                    //                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[2]].url)
+                    //-if item.fields.extramovieshots
+                    //-    .other-images
+                    //-        each subItem in item.fields.extramovieshots
+                    //-            each subSubItem in contentData.extramovieshots.records
+                    //-                // - We check for existence along the way
+                    //-                if subItem == subSubItem.id
+                    //-                    // - And then render our item
+                    //-                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[0]].url)
+                    //-                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[1]].url)
+                    //-                    img(src=subSubItem.fields.attachments[Object.keys(subSubItem.fields.attachments)[2]].url)
 
                 .cover-info
                     h2.cover-heading
@@ -44,4 +44,3 @@ block maincontent
     .categories-nav
         a.c-btn.c-btn--md(href="/albums.html") &larr; Previous: Albums
         a.c-btn.c-btn--md(href="/series.html") Next: Series &rarr;
-    

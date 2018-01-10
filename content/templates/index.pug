@@ -5,7 +5,7 @@ mixin image(item)
         -var imgsrc = item.fields.optimizedImage[Object.keys(item.fields.optimizedImage)[0]].url
     else if item.fields.image
         -var imgsrc = item.fields.image[Object.keys(item.fields.image)[0]].url
-    img(src=imgsrc)
+    img(src=imgsrc alt=item.fields.name)
 
 mixin cardbody
     .card-body
@@ -41,13 +41,9 @@ block body
         ul
             li
                 span.footer-label ©2018 Johan Ronsse
-            //li
-            //    a(href="https://twitter.com/wolfr_2")
-            //        +icon('twitter')
-            //        .btn-text Follow me on Twitter
             li
-                a(href="https://twitter.com/intent/tweet?status=Check%20out%20@wolfr_2%20%27s%20Best%20of%202017%20at%20http://bestof2017.johanronsse.be")
+                a(href="https://twitter.com/intent/tweet?text=Check%20out%20@wolfr_2%20%27s%20Best%20of%202017&url=http%3A%2F%2Fbestof2017.johanronsse.be")
                     +icon('twitter')
                     .btn-text Tweet about this!
             li: a(href="/disclaimer.html") Disclaimer
-            li: a(href="http://johanronsse.be/blog/") Check out the making of
+            li: a(href="http://johanronsse.be/2017/12/31/best-of-2017-a-side-project/") Check out the making of
